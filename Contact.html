@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - KC Family Salon and Academy</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Playfair Display', serif;
+        }
+
+        body {
+            background-color: #f9f6f2;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #f3e7e9 0%, #e3eeff 100%);
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            font-size: 3rem;
+            color: #4a2c3d;
+            letter-spacing: 2px;
+        }
+
+        nav {
+            margin: 1rem 0;
+        }
+
+        nav a {
+            color: #4a2c3d;
+            text-decoration: none;
+            margin: 0 1.5rem;
+            font-size: 1.2rem;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #d4a5a5;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 4rem 2rem;
+            text-align: center;
+            background-color: #fff;
+        }
+
+        .contact h2 {
+            font-size: 2.5rem;
+            color: #4a2c3d;
+            margin-bottom: 2rem;
+        }
+
+        .contact-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .contact-content p {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            max-width: 500px;
+            margin: 2rem auto;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            padding: 0.8rem;
+            font-size: 1rem;
+            border: 1px solid #d4a5a5;
+            border-radius: 5px;
+            background-color: #f9f6f2;
+            color: #333;
+        }
+
+        .contact-form textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .contact-form button {
+            background-color: #d4a5a5;
+            color: #fff;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 25px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .contact-form button:hover {
+            background-color: #b88b8b;
+        }
+
+        .book-now-btn {
+            display: inline-block;
+            background-color: #d4a5a5;
+            color: #fff;
+            padding: 0.8rem 1.5rem;
+            text-decoration: none;
+            border-radius: 25px;
+            font-size: 1rem;
+            margin: 1rem auto;
+            transition: background-color 0.3s;
+            width: 100%;
+            max-width: 150px;
+            text-align: center;
+        }
+
+        .book-now-btn:hover {
+            background-color: #b88b8b;
+        }
+
+        /* Map Section */
+        .map {
+            margin-top: 2rem;
+            text-align: center;
+        }
+
+        .map iframe {
+            width: 100%;
+            max-width: 800px;
+            height: 400px;
+            border: 0;
+            border-radius: 10px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #4a2c3d;
+            color: #fff;
+            text-align: center;
+            padding: 1rem 0;
+        }
+
+        footer p {
+            font-size: 1rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+
+            nav a {
+                margin: 0 0.8rem;
+                font-size: 1rem;
+            }
+
+            .contact h2 {
+                font-size: 2rem;
+            }
+
+            .contact-content {
+                padding: 0 1rem;
+            }
+
+            .contact-form {
+                max-width: 100%;
+            }
+
+            .book-now-btn {
+                max-width: 120px;
+            }
+
+            .map iframe {
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>KC Family Salon and Academy</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="services.html">Services</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+
+    <section class="contact" id="contact">
+        <h2>Contact Us</h2>
+        <div class="contact-content">
+            <p>Reach out to us for bookings or inquiries. We'd love to hear from you!</p>
+            <p><strong>Phone:</strong> +917002270181</p>
+            <p><strong>Email:</strong> info@kcfamilysalon.com</p>
+            <p><strong>Address:</strong> Bamunbari Tiniali, Tingkhong Road, Dibrugarh, Assam, 786613, India</p>
+            <a href="https://wa.me/+917002270181" class="book-now-btn" target="_blank">Book Now</a>
+            <h3>Send Us Your Feedback</h3>
+            <form class="contact-form" action="https://formspree.io/f/mdkdadvj" method="POST">
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="tel" name="whatsapp" placeholder="Your WhatsApp Number" required>
+                <textarea name="message" placeholder="Your Feedback" required></textarea>
+                <button type="submit">Submit Feedback</button>
+            </form>
+        </div>
+    </section>
+
+    <section class="map">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d256.14089151171004!2d94.98736006760447!3d27.24461421157794!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3740a923e72d5629%3A0x6bcb3e0c4da45bff!2sKC%20FAMILY%20SALOON%20PROFESSIONAL%20HAIR%26BEAUTY%20STUDIO%20(UNISEX)!5e0!3m2!1sen!2sin!4v1753020822154!5m2!1sen!2sin" allowfullscreen="" loading="lazy"></iframe>
+    </section>
+
+    <footer>
+        <p>© 2025 KC Family Salon and Academy. All rights reserved.</p>
+    </footer>
+</body>
+</html>

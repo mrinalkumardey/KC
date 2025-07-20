@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services - KC Family Salon and Academy</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Playfair Display', serif;
+        }
+
+        body {
+            background-color: #f9f6f2;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #f3e7e9 0%, #e3eeff 100%);
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            font-size: 3rem;
+            color: #4a2c3d;
+            letter-spacing: 2px;
+        }
+
+        nav {
+            margin: 1rem 0;
+        }
+
+        nav a {
+            color: #4a2c3d;
+            text-decoration: none;
+            margin: 0 1.5rem;
+            font-size: 1.2rem;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #d4a5a5;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 4rem 2rem;
+            text-align: center;
+            background-color: #fff;
+        }
+
+        .services h2 {
+            font-size: 2.5rem;
+            color: #4a2c3d;
+            margin-bottom: 2rem;
+        }
+
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background: #f9f6f2;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            color: #4a2c3d;
+            margin-bottom: 0.5rem;
+        }
+
+        .service-card .price, .service-card ul {
+            font-size: 1.2rem;
+            color: #d4a5a5;
+            margin-bottom: 1rem;
+            display: none;
+            text-align: left;
+        }
+
+        .service-card .price.show, .service-card ul.show {
+            display: block;
+        }
+
+        .service-card ul {
+            list-style: none;
+            font-size: 1rem;
+            color: #666;
+        }
+
+        .service-card ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .service-card p {
+            font-size: 1rem;
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .show-more-btn {
+            display: inline-block;
+            background-color: #d4a5a5;
+            color: #fff;
+            padding: 0.8rem 1.5rem;
+            text-decoration: none;
+            border-radius: 25px;
+            font-size: 1rem;
+            margin-top: 1rem;
+            transition: background-color 0.3s;
+            width: 100%;
+            max-width: 150px;
+            cursor: pointer;
+        }
+
+        .show-more-btn:hover {
+            background-color: #b88b8b;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #4a2c3d;
+            color: #fff;
+            text-align: center;
+            padding: 1rem 0;
+        }
+
+        footer p {
+            font-size: 1rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+
+            nav a {
+                margin: 0 0.8rem;
+                font-size: 1rem;
+            }
+
+            .services h2 {
+                font-size: 2rem;
+            }
+
+            .service-card {
+                padding: 1rem;
+            }
+
+            .show-more-btn {
+                max-width: 120px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>KC Family Salon and Academy</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="services.html">Services</a>
+            <a href="index.html#contact">Contact</a>
+        </nav>
+    </header>
+
+    <section class="services" id="services">
+        <h2>Our Services</h2>
+        <div class="service-grid">
+            <div class="service-card">
+                <h3>Men's Haircut</h3>
+                <ul id="mens-haircut-prices">
+                    <li>Haircut: ₹100</li>
+                    <li>Haircut + Washing + Blow Dry: ₹200</li>
+                    <li>Beard Shaving: ₹100</li>
+                    <li>Beard Trimming: ₹50</li>
+                </ul>
+                <p>Precision grooming services tailored for men, from classic fades to modern styles.</p>
+                <button class="show-more-btn" onclick="togglePrices('mens-haircut-prices')">Show More</button>
+            </div>
+            <div class="service-card">
+                <h3>Children's Haircut</h3>
+                <div class="price" id="childrens-haircut-price">₹100</div>
+                <p>Gentle, quick haircuts for kids, designed for comfort and fun.</p>
+                <button class="show-more-btn" onclick="togglePrices('childrens-haircut-price')">Show More</button>
+            </div>
+            <div class="service-card">
+                <h3>Hair Coloring</h3>
+                <ul id="hair-coloring-prices">
+                    <li>Hair Coloring: ₹600</li>
+                    <li>Hair Coloring (Ammonia-Free): ₹1500</li>
+                    <li>Highlight with Streak: ₹150</li>
+                    <li>Global Colour: ₹1500</li>
+                </ul>
+                <p>Vibrant, long-lasting color with premium products, customized to your style.</p>
+                <button class="show-more-btn" onclick="togglePrices('hair-coloring-prices')">Show More</button>
+            </div>
+            <div class="service-card">
+                <h3>Facial</h3>
+                <ul id="facial-prices">
+                    <li>CleanUp: ₹499</li>
+                    <li>CleanUp with D-Tan: ₹699</li>
+                    <li>Gold Facial: ₹1499</li>
+                    <li>Raaga CleanUp with D-Tan: ₹799</li>
+                    <li>Lotus Facial: ₹999</li>
+                    <li>Aroma Magic Brightening: ₹1200</li>
+                    <li>Fruit Facial: ₹500</li>
+                </ul>
+                <p>Rejuvenating facial treatments to enhance your natural glow and refresh your skin.</p>
+                <button class="show-more-btn" onclick="togglePrices('facial-prices')">Show More</button>
+            </div>
+            <div class="service-card">
+                <h3>Waxing</h3>
+                <ul id="waxing-prices">
+                    <li>Full Body: ₹2000</li>
+                    <li>Under Arms: ₹100</li>
+                    <li>Full Arms: ₹350</li>
+                    <li>Full Legs: ₹400</li>
+                    <li>Half Legs: ₹200</li>
+                    <li>Stomach: ₹200</li>
+                </ul>
+                <p>Smooth, long-lasting hair removal for various body areas using premium wax.</p>
+                <button class="show-more-btn" onclick="togglePrices('waxing-prices')">Show More</button>
+            </div>
+            <div class="service-card">
+                <h3>Threading</h3>
+                <ul id="threading-prices">
+                    <li>Full Face: ₹150</li>
+                    <li>Eyebrow: ₹20</li>
+                    <li>Upper Lip: ₹20</li>
+                    <li>Forehead: ₹20</li>
+                    <li>Chin: ₹20</li>
+                </ul>
+                <p>Precise hair removal for facial areas, shaping your features with expert care.</p>
+                <button class="show-more-btn" onclick="togglePrices('threading-prices')">Show More</button>
+            </div>
+            <div class="service-card">
+                <h3>Hair Treatment</h3>
+                <ul id="hair-treatment-prices">
+                    <li>Hair Smoothening: ₹3000 - ₹5000</li>
+                    <li>Hair Straightening: ₹3000 - ₹5000</li>
+                    <li>Hair Rebounding: ₹3500</li>
+                </ul>
+                <p>Advanced treatments to restore and transform your hair’s texture and shine.</p>
+                <button class="show-more-btn" onclick="togglePrices('hair-treatment-prices')">Show More</button>
+            </div>
+            <div class="service-card">
+                <h3>Keratin Treatment</h3>
+                <div class="price" id="keratin-treatment-price">₹1500 - ₹2500</div>
+                <p>Smooth and straighten your hair for a frizz-free, glossy finish that lasts weeks.</p>
+                <button class="show-more-btn" onclick="togglePrices('keratin-treatment-price')">Show More</button>
+            </div>
+            <div class="service-card">
+                <h3>Manicure</h3>
+                <div class="price" id="manicure-price">₹999</div>
+                <p>Luxurious nail care with shaping, cuticle care, and choice of polish or gel.</p>
+                <button class="show-more-btn" onclick="togglePrices('manicure-price')">Show More</button>
+            </div>
+            <div class="service-card">
+                <h3>Pedicure</h3>
+                <div class="price" id="pedicure-price">₹999</div>
+                <p>Relaxing foot treatment with exfoliation, massage, and perfect polish application.</p>
+                <button class="show-more-btn" onclick="togglePrices('pedicure-price')">Show More</button>
+            </div>
+            <div class="service-card">
+                <h3>Bridal Package</h3>
+                <div class="price" id="bridal-package-price">₹6000 - ₹14000</div>
+                <p>Complete bridal look with hair, makeup, and nail services for your special day.</p>
+                <button class="show-more-btn" onclick="togglePrices('bridal-package-price')">Show More</button>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2025 KC Family Saloon and Academy. All rights reserved.</p>
+        <p>Designed by Mrinal Kumar</p>
+        <div class="social-links">
+            <a href="https://www.instagram.com/kcfamilysaloon" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://wa.me/+917002270181" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://www.facebook.com/kcfamilysaloon" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        </div>
+    </footer>
+
+    <script>
+        function togglePrices(id) {
+            const priceElement = document.getElementById(id);
+            const button = priceElement.nextElementSibling.classList.contains('show-more-btn') ? 
+                          priceElement.nextElementSibling : 
+                          priceElement.parentElement.querySelector('.show-more-btn');
+            if (priceElement.classList.contains('show')) {
+                priceElement.classList.remove('show');
+                button.textContent = 'Show More';
+            } else {
+                priceElement.classList.add('show');
+                button.textContent = 'Hide';
+            }
+        }
+    </script>
+</body>
+</html>
