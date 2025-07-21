@@ -3,8 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Services - KC Family Salon and Academy</title>
+    <meta name="description" content="Explore a wide range of professional salon services at KC Family Saloon and Academy in Dibrugarh, including haircuts, coloring, facials, waxing, and more.">
+    <meta name="keywords" content="salon Dibrugarh, KC Family Saloon, haircut, hair coloring, facial, waxing, threading, tattoo">
+    <title>Services - KC Family Saloon and Academy</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -16,19 +23,24 @@
             background-color: #f9f6f2;
             color: #333;
             line-height: 1.6;
+            padding-top: 150px;
         }
 
         /* Header */
         header {
-            background: linear-gradient(135deg, #f3e7e9 0%, #e3eeff 100%);
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/images/kc.PNG') no-repeat center center/cover;
             padding: 2rem 0;
             text-align: center;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
         }
 
         header h1 {
             font-size: 3rem;
-            color: #4a2c3d;
+            color: #fff;
             letter-spacing: 2px;
         }
 
@@ -37,22 +49,26 @@
         }
 
         nav a {
-            color: #4a2c3d;
+            color: #fff;
             text-decoration: none;
             margin: 0 1.5rem;
             font-size: 1.2rem;
-            transition: color 0.3s;
+            transition: color 0.3s, transform 0.3s;
         }
 
         nav a:hover {
             color: #d4a5a5;
+            transform: scale(1.1);
         }
 
         /* Services Section */
         .services {
-            padding: 4rem 2rem;
+            padding: 8rem 2rem;
             text-align: center;
             background-color: #fff;
+            min-height: 80vh;
+            position: sticky;
+            top: 150px;
         }
 
         .services h2 {
@@ -146,8 +162,25 @@
             font-size: 1rem;
         }
 
+        .social-links a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 0.75rem;
+            font-size: 1.2rem;
+            transition: color 0.3s, transform 0.3s;
+        }
+
+        .social-links a:hover {
+            color: #d4a5a5;
+            transform: scale(1.1);
+        }
+
         /* Responsive Design */
         @media (max-width: 768px) {
+            body {
+                padding-top: 120px;
+            }
+
             header h1 {
                 font-size: 2rem;
             }
@@ -155,6 +188,11 @@
             nav a {
                 margin: 0 0.8rem;
                 font-size: 1rem;
+            }
+
+            .services {
+                padding: 6rem 1rem;
+                top: 120px;
             }
 
             .services h2 {
@@ -168,16 +206,23 @@
             .show-more-btn {
                 max-width: 120px;
             }
+
+            .social-links a {
+                font-size: 1rem;
+                margin: 0 0.5rem;
+            }
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>KC Family Salon and Academy</h1>
+        <h1>KC Family Saloon and Academy</h1>
         <nav>
             <a href="index.html">Home</a>
             <a href="services.html">Services</a>
-            <a href="index.html#contact">Contact</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="Tatto.html">Tattoo</a>
+            <a href="contact.html">Contact</a>
         </nav>
     </header>
 
@@ -211,6 +256,22 @@
                 </ul>
                 <p>Vibrant, long-lasting color with premium products, customized to your style.</p>
                 <button class="show-more-btn" onclick="togglePrices('hair-coloring-prices')">Show More</button>
+            </div>
+            <div class="service-card">
+                <h3>Hairdressing for Women</h3>
+                <ul id="hairdressing-women-prices">
+                    <li>Hair Trimming: ₹150</li>
+                    <li>Haircut + Washing + Blow Dry: ₹350</li>
+                    <li>Hair Wash + Blow Dry: ₹250</li>
+                    <li>Temporary Hair Straightening: ₹500</li>
+                    <li>Hair Spa Regular: ₹800</li>
+                    <li>Hair Spa for Dandruff: ₹1000</li>
+                    <li>Hair Spa Keratin: ₹1000</li>
+                    <li>Hair Spa for Frizzy Hair: ₹900</li>
+                    <li>Head Massage: ₹250</li>
+                </ul>
+                <p>Specialized hairdressing services for women, offering stylish cuts, treatments, and spa experiences.</p>
+                <button class="show-more-btn" onclick="togglePrices('hairdressing-women-prices')">Show More</button>
             </div>
             <div class="service-card">
                 <h3>Facial</h3>

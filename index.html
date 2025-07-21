@@ -3,13 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Explore a wide range of professional salon services at KC Family Saloon and Academy in Dibrugarh, including haircuts, coloring, facials, waxing, and more.">
-    <meta name="keywords" content="salon Dibrugarh, KC Family Saloon, haircut, hair coloring, facial, waxing, threading, tattoo">
-    <title>Services - KC Family Saloon and Academy</title>
+    <meta name="description" content="Welcome to KC Family Saloon and Academy in Dibrugarh, Assam. Book your appointment for expert hair, skin, nail, and tattoo services.">
+    <meta name="keywords" content="salon Dibrugarh, KC Family Saloon, haircut, tattoo, facial, waxing, bridal services">
+    <title>KC Family Saloon and Academy - Dibrugarh</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         html {
             scroll-behavior: smooth;
+            background-color: #4a2c3d; /* Fallback to prevent black patches */
         }
 
         * {
@@ -24,6 +25,7 @@
             color: #333;
             line-height: 1.6;
             padding-top: 150px;
+            min-height: 100vh; /* Ensure footer is reachable */
         }
 
         /* Header */
@@ -61,93 +63,136 @@
             transform: scale(1.1);
         }
 
-        /* Services Section */
-        .services {
+        /* Hero Section */
+        .hero {
             padding: 8rem 2rem;
             text-align: center;
-            background-color: #fff;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/images/gallery5.png') no-repeat center center/cover;
+            color: #fff;
             min-height: 80vh;
             position: sticky;
-            top: 150px;
+            top: 150px; /* Stick below header */
         }
 
-        .services h2 {
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            animation: fadeIn 1s ease-in;
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            font-weight: 600;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+            animation: fadeIn 1s ease-in 0.3s forwards;
+            opacity: 0;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(to right, #d4a5a5, #b88b8b);
+            color: #fff;
+            padding: 1rem 2rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-size: 1.4rem;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+            animation: fadeIn 1s ease-in 0.9s forwards;
+            opacity: 0;
+        }
+
+        .cta-button:hover {
+            transform: scale(1.15);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        /* About Section */
+        .about {
+            padding: 4rem 2rem;
+            text-align: center;
+            background-color: #fff;
+            position: sticky;
+            top: 150px; /* Stick below header */
+        }
+
+        .about h2 {
             font-size: 2.5rem;
             color: #4a2c3d;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
         }
 
-        .service-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            max-width: 1200px;
+        .about p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            color: #666;
+        }
+
+        /* Contact Form Section */
+        .contact-form {
+            padding: 4rem 2rem;
+            text-align: center;
+            background-color: #f9f6f2;
+            position: sticky;
+            top: 150px; /* Stick below header */
+        }
+
+        .contact-form h2 {
+            font-size: 2.5rem;
+            color: #4a2c3d;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-container {
+            max-width: 600px;
             margin: 0 auto;
         }
 
-        .service-card {
-            background: #f9f6f2;
-            padding: 1.5rem;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s;
-        }
-
-        .service-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .service-card h3 {
-            font-size: 1.5rem;
-            color: #4a2c3d;
-            margin-bottom: 0.5rem;
-        }
-
-        .service-card .price, .service-card ul {
-            font-size: 1.2rem;
-            color: #d4a5a5;
-            margin-bottom: 1rem;
-            display: none;
-            text-align: left;
-        }
-
-        .service-card .price.show, .service-card ul.show {
-            display: block;
-        }
-
-        .service-card ul {
-            list-style: none;
-            font-size: 1rem;
-            color: #666;
-        }
-
-        .service-card ul li {
-            margin-bottom: 0.5rem;
-        }
-
-        .service-card p {
-            font-size: 1rem;
-            color: #666;
-            margin-bottom: 1rem;
-        }
-
-        .show-more-btn {
-            display: inline-block;
-            background-color: #d4a5a5;
-            color: #fff;
-            padding: 0.8rem 1.5rem;
-            text-decoration: none;
-            border-radius: 25px;
-            font-size: 1rem;
-            margin-top: 1rem;
-            transition: background-color 0.3s;
+        .form-container input,
+        .form-container select,
+        .form-container textarea {
             width: 100%;
-            max-width: 150px;
-            cursor: pointer;
+            padding: 0.8rem;
+            margin: 0.5rem 0;
+            border: 1px solid #d4a5a5;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-family: 'Playfair Display', serif;
         }
 
-        .show-more-btn:hover {
-            background-color: #b88b8b;
+        .form-container input[type="tel"] {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .form-container textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .form-container button {
+            background: linear-gradient(to right, #d4a5a5, #b88b8b);
+            color: #fff;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .form-container button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px) scale(0.95); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
         }
 
         /* Footer */
@@ -155,11 +200,17 @@
             background-color: #4a2c3d;
             color: #fff;
             text-align: center;
-            padding: 1rem 0;
+            padding: 2rem 0;
+            position: relative;
+            z-index: 1000; /* Ensure footer is above other elements */
         }
 
         footer p {
             font-size: 1rem;
+        }
+
+        .social-links {
+            margin-top: 0.5rem;
         }
 
         .social-links a {
@@ -190,26 +241,53 @@
                 font-size: 1rem;
             }
 
-            .services {
+            .hero {
                 padding: 6rem 1rem;
                 top: 120px;
             }
 
-            .services h2 {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+            }
+
+            .cta-button {
+                font-size: 1.2rem;
+                padding: 0.8rem 1.5rem;
+            }
+
+            .about {
+                padding: 3rem 1rem;
+                top: 120px;
+            }
+
+            .about h2 {
                 font-size: 2rem;
             }
 
-            .service-card {
-                padding: 1rem;
+            .about p {
+                font-size: 1rem;
             }
 
-            .show-more-btn {
-                max-width: 120px;
+            .contact-form {
+                padding: 3rem 1rem;
+                top: 120px;
+            }
+
+            .contact-form h2 {
+                font-size: 2rem;
             }
 
             .social-links a {
                 font-size: 1rem;
                 margin: 0 0.5rem;
+            }
+
+            footer {
+                padding: 1.5rem 0;
             }
         }
     </style>
@@ -226,126 +304,43 @@
         </nav>
     </header>
 
-    <section class="services" id="services">
-        <h2>Our Services</h2>
-        <div class="service-grid">
-            <div class="service-card">
-                <h3>Men's Haircut</h3>
-                <ul id="mens-haircut-prices">
-                    <li>Haircut: ₹100</li>
-                    <li>Haircut + Washing + Blow Dry: ₹200</li>
-                    <li>Beard Shaving: ₹100</li>
-                    <li>Beard Trimming: ₹50</li>
-                </ul>
-                <p>Precision grooming services tailored for men, from classic fades to modern styles.</p>
-                <button class="show-more-btn" onclick="togglePrices('mens-haircut-prices')">Show More</button>
-            </div>
-            <div class="service-card">
-                <h3>Children's Haircut</h3>
-                <div class="price" id="childrens-haircut-price">₹100</div>
-                <p>Gentle, quick haircuts for kids, designed for comfort and fun.</p>
-                <button class="show-more-btn" onclick="togglePrices('childrens-haircut-price')">Show More</button>
-            </div>
-            <div class="service-card">
-                <h3>Hair Coloring</h3>
-                <ul id="hair-coloring-prices">
-                    <li>Hair Coloring: ₹600</li>
-                    <li>Hair Coloring (Ammonia-Free): ₹1500</li>
-                    <li>Highlight with Streak: ₹150</li>
-                    <li>Global Colour: ₹1500</li>
-                </ul>
-                <p>Vibrant, long-lasting color with premium products, customized to your style.</p>
-                <button class="show-more-btn" onclick="togglePrices('hair-coloring-prices')">Show More</button>
-            </div>
-            <div class="service-card">
-                <h3>Hairdressing for Women</h3>
-                <ul id="hairdressing-women-prices">
-                    <li>Hair Trimming: ₹150</li>
-                    <li>Haircut + Washing + Blow Dry: ₹350</li>
-                    <li>Hair Wash + Blow Dry: ₹250</li>
-                    <li>Temporary Hair Straightening: ₹500</li>
-                    <li>Hair Spa Regular: ₹800</li>
-                    <li>Hair Spa for Dandruff: ₹1000</li>
-                    <li>Hair Spa Keratin: ₹1000</li>
-                    <li>Hair Spa for Frizzy Hair: ₹900</li>
-                    <li>Head Massage: ₹250</li>
-                </ul>
-                <p>Specialized hairdressing services for women, offering stylish cuts, treatments, and spa experiences.</p>
-                <button class="show-more-btn" onclick="togglePrices('hairdressing-women-prices')">Show More</button>
-            </div>
-            <div class="service-card">
-                <h3>Facial</h3>
-                <ul id="facial-prices">
-                    <li>CleanUp: ₹499</li>
-                    <li>CleanUp with D-Tan: ₹699</li>
-                    <li>Gold Facial: ₹1499</li>
-                    <li>Raaga CleanUp with D-Tan: ₹799</li>
-                    <li>Lotus Facial: ₹999</li>
-                    <li>Aroma Magic Brightening: ₹1200</li>
-                    <li>Fruit Facial: ₹500</li>
-                </ul>
-                <p>Rejuvenating facial treatments to enhance your natural glow and refresh your skin.</p>
-                <button class="show-more-btn" onclick="togglePrices('facial-prices')">Show More</button>
-            </div>
-            <div class="service-card">
-                <h3>Waxing</h3>
-                <ul id="waxing-prices">
-                    <li>Full Body: ₹2000</li>
-                    <li>Under Arms: ₹100</li>
-                    <li>Full Arms: ₹350</li>
-                    <li>Full Legs: ₹400</li>
-                    <li>Half Legs: ₹200</li>
-                    <li>Stomach: ₹200</li>
-                </ul>
-                <p>Smooth, long-lasting hair removal for various body areas using premium wax.</p>
-                <button class="show-more-btn" onclick="togglePrices('waxing-prices')">Show More</button>
-            </div>
-            <div class="service-card">
-                <h3>Threading</h3>
-                <ul id="threading-prices">
-                    <li>Full Face: ₹150</li>
-                    <li>Eyebrow: ₹20</li>
-                    <li>Upper Lip: ₹20</li>
-                    <li>Forehead: ₹20</li>
-                    <li>Chin: ₹20</li>
-                </ul>
-                <p>Precise hair removal for facial areas, shaping your features with expert care.</p>
-                <button class="show-more-btn" onclick="togglePrices('threading-prices')">Show More</button>
-            </div>
-            <div class="service-card">
-                <h3>Hair Treatment</h3>
-                <ul id="hair-treatment-prices">
-                    <li>Hair Smoothening: ₹3000 - ₹5000</li>
-                    <li>Hair Straightening: ₹3000 - ₹5000</li>
-                    <li>Hair Rebounding: ₹3500</li>
-                </ul>
-                <p>Advanced treatments to restore and transform your hair’s texture and shine.</p>
-                <button class="show-more-btn" onclick="togglePrices('hair-treatment-prices')">Show More</button>
-            </div>
-            <div class="service-card">
-                <h3>Keratin Treatment</h3>
-                <div class="price" id="keratin-treatment-price">₹1500 - ₹2500</div>
-                <p>Smooth and straighten your hair for a frizz-free, glossy finish that lasts weeks.</p>
-                <button class="show-more-btn" onclick="togglePrices('keratin-treatment-price')">Show More</button>
-            </div>
-            <div class="service-card">
-                <h3>Manicure</h3>
-                <div class="price" id="manicure-price">₹999</div>
-                <p>Luxurious nail care with shaping, cuticle care, and choice of polish or gel.</p>
-                <button class="show-more-btn" onclick="togglePrices('manicure-price')">Show More</button>
-            </div>
-            <div class="service-card">
-                <h3>Pedicure</h3>
-                <div class="price" id="pedicure-price">₹999</div>
-                <p>Relaxing foot treatment with exfoliation, massage, and perfect polish application.</p>
-                <button class="show-more-btn" onclick="togglePrices('pedicure-price')">Show More</button>
-            </div>
-            <div class="service-card">
-                <h3>Bridal Package</h3>
-                <div class="price" id="bridal-package-price">₹6000 - ₹14000</div>
-                <p>Complete bridal look with hair, makeup, and nail services for your special day.</p>
-                <button class="show-more-btn" onclick="togglePrices('bridal-package-price')">Show More</button>
-            </div>
+    <section class="hero">
+        <h1>Welcome to KC Family Saloon and Academy</h1>
+        <p>Experience world-class salon and tattoo services in the heart of Dibrugarh, Assam. From stylish haircuts to stunning tattoos, our expert team is here to bring your vision to life.</p>
+        <a href="#contact-form" class="cta-button">Book Now</a>
+    </section>
+
+    <section class="about">
+        <h2>About Us</h2>
+        <p>Located in Bamunbari Tiniali, Tingkhong Road, Dibrugarh, Assam, KC Family Saloon and Academy is your premier destination for beauty and grooming. Our skilled professionals use top-grade, safe products to deliver exceptional hair, skin, nail, and tattoo services. Whether you’re preparing for a special occasion or seeking a fresh look, we’re dedicated to making you feel confident and beautiful.</p>
+    </section>
+
+    <section class="contact-form" id="contact-form">
+        <h2>Book Your Appointment</h2>
+        <div class="form-container">
+            <form action="https://formspree.io/f/mdkdadvj" method="POST">
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="tel" name="whatsapp" placeholder="Your WhatsApp Number" required>
+                <select name="service" required>
+                    <option value="" disabled selected>Select Service</option>
+                    <option value="Mens Haircut">Men's Haircut</option>
+                    <option value="Childrens Haircut">Children's Haircut</option>
+                    <option value="Hairdressing for Women">Hairdressing for Women</option>
+                    <option value="Hair Coloring">Hair Coloring</option>
+                    <option value="Facial">Facial</option>
+                    <option value="Waxing">Waxing</option>
+                    <option value="Threading">Threading</option>
+                    <option value="Hair Treatment">Hair Treatment</option>
+                    <option value="Keratin Treatment">Keratin Treatment</option>
+                    <option value="Manicure">Manicure</option>
+                    <option value="Pedicure">Pedicure</option>
+                    <option value="Bridal Package">Bridal Package</option>
+                    <option value="Tattoo">Tattoo</option>
+                </select>
+                <input type="date" name="date" required>
+                <textarea name="message" placeholder="Additional Details (e.g., preferred time, specific requests)" required></textarea>
+                <button type="submit">Submit</button>
+            </form>
         </div>
     </section>
 
@@ -358,21 +353,5 @@
             <a href="https://www.facebook.com/kcfamilysaloon" target="_blank"><i class="fab fa-facebook-f"></i></a>
         </div>
     </footer>
-
-    <script>
-        function togglePrices(id) {
-            const priceElement = document.getElementById(id);
-            const button = priceElement.nextElementSibling.classList.contains('show-more-btn') ? 
-                          priceElement.nextElementSibling : 
-                          priceElement.parentElement.querySelector('.show-more-btn');
-            if (priceElement.classList.contains('show')) {
-                priceElement.classList.remove('show');
-                button.textContent = 'Show More';
-            } else {
-                priceElement.classList.add('show');
-                button.textContent = 'Hide';
-            }
-        }
-    </script>
 </body>
 </html>
