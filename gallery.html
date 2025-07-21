@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery - KC Family Saloon and Academy</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        html {
+            scroll-behavior: smooth; /* Smooth scrolling for all adjustments */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Playfair Display', serif;
+        }
+
+        body {
+            background-color: #f9f6f2;
+            color: #333;
+            line-height: 1.6;
+            padding-top: 150px; /* Increased to ensure content clears header */
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/images/kc.PNG') no-repeat center center/cover;
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            color: #fff;
+            letter-spacing: 2px;
+        }
+
+        nav {
+            margin: 1rem 0;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 1.5rem;
+            font-size: 1.2rem;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #d4a5a5;
+        }
+
+        /* Gallery Section */
+        .gallery {
+            padding: 8rem 2rem; /* Increased padding-top for title visibility */
+            text-align: center;
+            background-color: #fff;
+            min-height: 80vh;
+            position: sticky; /* Pin gallery below header */
+            top: 150px; /* Match body padding-top */
+        }
+
+        .gallery h2 {
+            font-size: 2.5rem;
+            color: #4a2c3d;
+            margin-bottom: 2rem;
+        }
+
+        .book-container {
+            perspective: 1000px;
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            height: 500px;
+        }
+
+        .book {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+        }
+
+        .page {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            transform-origin: left center;
+            transition: transform 0.8s ease-in-out;
+        }
+
+        .page img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .page.active {
+            transform: rotateY(0deg);
+            z-index: 10;
+        }
+
+        .page:not(.active) {
+            transform: rotateY(-180deg);
+            z-index: 0;
+        }
+
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            max-width: 800px;
+            margin: 1rem auto;
+        }
+
+        .nav-buttons button {
+            background-color: #d4a5a5;
+            color: #fff;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 25px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            outline: none;
+        }
+
+        .nav-buttons button:hover {
+            background-color: #b88b8b;
+        }
+
+        .nav-buttons button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+
+        .thumbnails {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 2rem;
+            flex-wrap: nowrap;
+            overflow-x: auto;
+            padding: 0.5rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .thumbnails img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .thumbnails img:hover {
+            transform: scale(1.1);
+        }
+
+        .thumbnails img.active {
+            border: 2px solid #d4a5a5;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #4a2c3d;
+            color: #fff;
+            text-align: center;
+            padding: 1rem 0;
+        }
+
+        footer p {
+            font-size: 1rem;
+        }
+
+        .social-links {
+            margin-top: 0.5rem;
+        }
+
+        .social-links a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 0.75rem;
+            font-size: 1.2rem;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: #d4a5a5;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            body {
+                padding-top: 120px; /* Adjusted for smaller header on mobile */
+            }
+
+            header h1 {
+                font-size: 2rem;
+            }
+
+            nav a {
+                margin: 0 0.8rem;
+                font-size: 1rem;
+            }
+
+            .gallery {
+                padding: 6rem 2rem; /* Slightly reduced for mobile */
+                top: 120px; /* Match body padding-top */
+            }
+
+            .gallery h2 {
+                font-size: 2rem;
+            }
+
+            .book-container {
+                max-width: 100%;
+                height: 300px;
+            }
+
+            .thumbnails {
+                gap: 0.3rem;
+            }
+
+            .thumbnails img {
+                width: 50px;
+                height: 50px;
+            }
+
+            .social-links a {
+                font-size: 1rem;
+                margin: 0 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>KC Family Saloon and Academy</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="services.html">Services</a>
+            <a href="Tatto.html">Tatto</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+
+    <section class="gallery">
+        <h2>Our Gallery</h2>
+        <div class="book-container">
+            <div class="book" id="book">
+                <div class="page active"><img src="/images/gallery1.png" alt="Salon Interior" loading="lazy"></div>
+                <div class="page"><img src="/images/gallery2.png" alt="Hair Tools" loading="lazy"></div>
+                <div class="page"><img src="/images/gallery3.png" alt="Hair Styling" loading="lazy"></div>
+                <div class="page"><img src="/images/gallery4.png" alt="Salon Chair" loading="lazy"></div>
+                <div class="page"><img src="/images/gallery5.png" alt="Haircut" loading="lazy"></div>
+                <div class="page"><img src="/images/gallery6.jpg" alt="Hair Coloring" loading="lazy"></div>
+                <div class="page"><img src="/images/gallery7.jpg" alt="Bridal Makeover" loading="lazy"></div>
+                <div class="page"><img src="/images/gallery8.jpg" alt="Facial Treatment" loading="lazy"></div>
+                <div class="page"><img src="/images/gallery9.jpg" alt="Men’s Haircut" loading="lazy"></div>
+                <div class="page"><img src="/images/gallery10.jpg" alt="Balayage Styling" loading="lazy"></div>
+                <div class="page"><img src="/images/gallery11.jpg" alt="Salon Ambiance" loading="lazy"></div>
+                <div class="page"><img src="/images/gallery12.jpg" alt="Hair Straightening" loading="lazy"></div>
+                <div class="page"><img src="/images/gallery13.jpg" alt="Waxing Service" loading="lazy"></div>
+                <div class="page"><img src="/images/gallery14.jpg" alt="Client Transformation" loading="lazy"></div>
+                <div class="page"><img src="/images/gallery15.jpg" alt="Salon Equipment" loading="lazy"></div>
+                <div class="page"><img src="/images/gallery16.jpg" alt="Evening Makeover" loading="lazy"></div>
+                <div class="page"><img src="/images/gallery17.jpg" alt="Hair Curling" loading="lazy"></div>
+                <div class="page"><img src="/images/gallery18.jpg" alt="Skin Care Treatment" loading="lazy"></div>
+                <div class="page"><img src="/images/gallery19.jpg" alt="Women’s Haircut" loading="lazy"></div>
+                <div class="page"><img src="/images/gallery20.jpg" alt="Highlight Styling" loading="lazy"></div>
+                <div class="page"><img src="/images/gallery21.jpg" alt="Salon Reception" loading="lazy"></div>
+                <div class="page"><img src="/images/gallery22.jpg" alt="Threading Service" loading="lazy"></div>
+                <div class="page"><img src="/images/gallery23.jpg" alt="Before and After Haircut" loading="lazy"></div>
+                <div class="page"><img src="/images/gallery24.jpg" alt="Manicure Service" loading="lazy"></div>
+                <div class="page"><img src="/images/gallery25.jpg" alt="Pedicure Service" loading="lazy"></div>
+                <div class="page"><img src="/images/gallery26.jpg" alt="Special Event Styling" loading="lazy"></div>
+                <div class="page"><img src="/images/gallery27.jpg" alt="Salon Team" loading="lazy"></div>
+                <div class="page"><img src="/images/gallery28.jpg" alt="Hair Treatment" loading="lazy"></div>
+                <div class="page"><img src="/images/gallery29.jpg" alt="Updo Styling" loading="lazy"></div>
+                <div class="page"><img src="/images/gallery30.jpg" alt="Salon Decor" loading="lazy"></div>
+                <div class="page"><img src="/images/gallery31.jpg" alt="Client Hair Coloring" loading="lazy"></div>
+                <div class="page"><img src="/images/gallery32.jpg" alt="Bridal Hair Styling" loading="lazy"></div>
+                <div class="page"><img src="/images/gallery33.jpg" alt="Facial Cleansing" loading="lazy"></div>
+                <div class="page"><img src="/images/gallery34.jpg" alt="Hair Spa Treatment" loading="lazy"></div>
+                <div class="page"><img src="/images/gallery35.jpg" alt="Salon Workstation" loading="lazy"></div>
+                <div class="page"><img src="/images/gallery16.jpg" alt="Evening Makeover Repeat" loading="lazy"></div>
+            </div>
+        </div>
+        <div class="nav-buttons">
+            <button id="prevBtn" disabled>Previous</button>
+            <button id="nextBtn">Next</button>
+        </div>
+        <div class="thumbnails">
+            <img src="/images/gallery1.png" alt="Salon Interior" data-page="0" class="active" loading="lazy">
+            <img src="/images/gallery2.png" alt="Hair Tools" data-page="1" loading="lazy">
+            <img src="/images/gallery3.png" alt="Hair Styling" data-page="2" loading="lazy">
+            <img src="/images/gallery4.png" alt="Salon Chair" data-page="3" loading="lazy">
+            <img src="/images/gallery5.png" alt="Haircut" data-page="4" loading="lazy">
+            <img src="/images/gallery6.jpg" alt="Hair Coloring" data-page="5" loading="lazy">
+            <img src="/images/gallery7.jpg" alt="Bridal Makeover" data-page="6" loading="lazy">
+            <img src="/images/gallery8.jpg" alt="Facial Treatment" data-page="7" loading="lazy">
+            <img src="/images/gallery9.jpg" alt="Men’s Haircut" data-page="8" loading="lazy">
+            <img src="/images/gallery10.jpg" alt="Balayage Styling" data-page="9" loading="lazy">
+            <img src="/images/gallery11.jpg" alt="Salon Ambiance" data-page="10" loading="lazy">
+            <img src="/images/gallery12.jpg" alt="Hair Straightening" data-page="11" loading="lazy">
+            <img src="/images/gallery13.jpg" alt="Waxing Service" data-page="12" loading="lazy">
+            <img src="/images/gallery14.jpg" alt="Client Transformation" data-page="13" loading="lazy">
+            <img src="/images/gallery15.jpg" alt="Salon Equipment" data-page="14" loading="lazy">
+            <img src="/images/gallery16.jpg" alt="Evening Makeover" data-page="15" loading="lazy">
+            <img src="/images/gallery17.jpg" alt="Hair Curling" data-page="16" loading="lazy">
+            <img src="/images/gallery18.jpg" alt="Skin Care Treatment" data-page="17" loading="lazy">
+            <img src="/images/gallery19.jpg" alt="Women’s Haircut" data-page="18" loading="lazy">
+            <img src="/images/gallery20.jpg" alt="Highlight Styling" data-page="19" loading="lazy">
+            <img src="/images/gallery21.jpg" alt="Salon Reception" data-page="20" loading="lazy">
+            <img src="/images/gallery22.jpg" alt="Threading Service" data-page="21" loading="lazy">
+            <img src="/images/gallery23.jpg" alt="Before and After Haircut" data-page="22" loading="lazy">
+            <img src="/images/gallery24.jpg" alt="Manicure Service" data-page="23" loading="lazy">
+            <img src="/images/gallery25.jpg" alt="Pedicure Service" data-page="24" loading="lazy">
+            <img src="/images/gallery26.jpg" alt="Special Event Styling" data-page="25" loading="lazy">
+            <img src="/images/gallery27.jpg" alt="Salon Team" data-page="26" loading="lazy">
+            <img src="/images/gallery28.jpg" alt="Hair Treatment" data-page="27" loading="lazy">
+            <img src="/images/gallery29.jpg" alt="Updo Styling" data-page="28" loading="lazy">
+            <img src="/images/gallery30.jpg" alt="Salon Decor" data-page="29" loading="lazy">
+            <img src="/images/gallery31.jpg" alt="Client Hair Coloring" data-page="30" loading="lazy">
+            <img src="/images/gallery32.jpg" alt="Bridal Hair Styling" data-page="31" loading="lazy">
+            <img src="/images/gallery33.jpg" alt="Facial Cleansing" data-page="32" loading="lazy">
+            <img src="/images/gallery34.jpg" alt="Hair Spa Treatment" data-page="33" loading="lazy">
+            <img src="/images/gallery35.jpg" alt="Salon Workstation" data-page="34" loading="lazy">
+            <img src="/images/gallery16.jpg" alt="Evening Makeover Repeat" data-page="35" loading="lazy">
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2025 KC Family Saloon and Academy. All rights reserved.</p>
+        <p>Designed by Mrinal Kumar</p>
+        <div class="social-links">
+            <a href="https://www.instagram.com/kcfamilysaloon" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://wa.me/+917002270181" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://www.facebook.com/kcfamilysaloon" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        </div>
+    </footer>
+
+    <script>
+        const book = document.getElementById('book');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const thumbnails = document.querySelectorAll('.thumbnails img');
+        const pages = document.querySelectorAll('.page');
+        let currentPage = 0;
+        const totalPages = pages.length;
+
+        function maintainScrollPosition() {
+            const gallery = document.querySelector('.gallery');
+            const rect = gallery.getBoundingClientRect();
+            const headerHeight = window.innerWidth <= 768 ? 120 : 150; // Match body padding-top
+            if (rect.top < headerHeight) {
+                window.scrollTo({
+                    top: window.scrollY + rect.top - headerHeight,
+                    behavior: 'smooth'
+                });
+            }
+        }
+
+        function updatePage() {
+            pages.forEach((page, index) => {
+                page.classList.toggle('active', index === currentPage);
+            });
+            prevBtn.disabled = currentPage === 0;
+            nextBtn.disabled = currentPage === totalPages - 1;
+            thumbnails.forEach(thumb => thumb.classList.remove('active'));
+            thumbnails[currentPage].classList.add('active');
+            thumbnails[currentPage].scrollIntoView({ behavior: 'smooth', inline: 'center' });
+            maintainScrollPosition();
+        }
+
+        function flipPage(direction, event) {
+            if (event) event.preventDefault();
+            if (direction === 'next' && currentPage < totalPages - 1) {
+                currentPage++;
+            } else if (direction === 'prev' && currentPage > 0) {
+                currentPage--;
+            }
+            updatePage();
+        }
+
+        prevBtn.addEventListener('click', (e) => flipPage('prev', e));
+        nextBtn.addEventListener('click', (e) => flipPage('next', e));
+
+        thumbnails.forEach(thumb => {
+            thumb.addEventListener('click', (e) => {
+                e.preventDefault(); // Prevent scroll on thumbnail click
+                currentPage = parseInt(thumb.dataset.page);
+                updatePage();
+            });
+        });
+
+        // Touch support for mobile
+        let touchStartX = 0;
+        book.addEventListener('touchstart', e => {
+            touchStartX = e.touches[0].clientX;
+        });
+        book.addEventListener('touchend', e => {
+            const touchEndX = e.changedTouches[0].clientX;
+            if (touchEndX < touchStartX - 50) flipPage('next');
+            if (touchEndX > touchStartX + 50) flipPage('prev');
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', e => {
+            if (e.key === 'ArrowLeft') flipPage('prev');
+            if (e.key === 'ArrowRight') flipPage('next');
+        });
+
+        updatePage();
+    </script>
+</body>
+</html>
