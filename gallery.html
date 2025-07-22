@@ -7,7 +7,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         html {
-            scroll-behavior: smooth; /* Smooth scrolling for all adjustments */
+            scroll-behavior: smooth;
+            background-color: #4a2c3d; /* Fallback to prevent black patches */
         }
 
         * {
@@ -21,7 +22,8 @@
             background-color: #f9f6f2;
             color: #333;
             line-height: 1.6;
-            padding-top: 150px; /* Increased to ensure content clears header */
+            padding-top: 150px;
+            min-height: 100vh; /* Ensure footer is reachable */
         }
 
         /* Header */
@@ -51,21 +53,22 @@
             text-decoration: none;
             margin: 0 1.5rem;
             font-size: 1.2rem;
-            transition: color 0.3s;
+            transition: color 0.3s, transform 0.3s; /* Added transform for consistency */
         }
 
         nav a:hover {
             color: #d4a5a5;
+            transform: scale(1.1); /* Added for consistency */
         }
 
         /* Gallery Section */
         .gallery {
-            padding: 8rem 2rem; /* Increased padding-top for title visibility */
+            padding: 8rem 2rem;
             text-align: center;
             background-color: #fff;
             min-height: 80vh;
-            position: sticky; /* Pin gallery below header */
-            top: 150px; /* Match body padding-top */
+            position: sticky;
+            top: 150px;
         }
 
         .gallery h2 {
@@ -183,7 +186,9 @@
             background-color: #4a2c3d;
             color: #fff;
             text-align: center;
-            padding: 1rem 0;
+            padding: 2rem 0; /* Increased for consistency */
+            position: relative;
+            z-index: 1000; /* Ensure above sticky sections */
         }
 
         footer p {
@@ -199,17 +204,18 @@
             text-decoration: none;
             margin: 0 0.75rem;
             font-size: 1.2rem;
-            transition: color 0.3s;
+            transition: color 0.3s, transform 0.3s; /* Added transform for consistency */
         }
 
         .social-links a:hover {
             color: #d4a5a5;
+            transform: scale(1.1); /* Added for consistency */
         }
 
         /* Responsive Design */
         @media (max-width: 768px) {
             body {
-                padding-top: 120px; /* Adjusted for smaller header on mobile */
+                padding-top: 120px;
             }
 
             header h1 {
@@ -222,8 +228,8 @@
             }
 
             .gallery {
-                padding: 6rem 2rem; /* Slightly reduced for mobile */
-                top: 120px; /* Match body padding-top */
+                padding: 6rem 2rem;
+                top: 120px;
             }
 
             .gallery h2 {
@@ -248,6 +254,10 @@
                 font-size: 1rem;
                 margin: 0 0.5rem;
             }
+
+            footer {
+                padding: 1.5rem 0;
+            }
         }
     </style>
 </head>
@@ -257,7 +267,7 @@
         <nav>
             <a href="index.html">Home</a>
             <a href="services.html">Services</a>
-            <a href="Tatto.html">Tatto</a>
+            <a href="Tatto.html">Tattoo</a> <!-- Fixed capitalization -->
             <a href="gallery.html">Gallery</a>
             <a href="contact.html">Contact</a>
         </nav>
@@ -289,7 +299,7 @@
                 <div class="page"><img src="/images/gallery20.jpg" alt="Highlight Styling" loading="lazy"></div>
                 <div class="page"><img src="/images/gallery21.jpg" alt="Salon Reception" loading="lazy"></div>
                 <div class="page"><img src="/images/gallery22.jpg" alt="Threading Service" loading="lazy"></div>
-                <div class="page"><img src="/images/gallery23.jpg" alt="Before and After Haircut" loading="lazy"></div>
+                <div class="page"><img src="/images/gazebo23.jpg" alt="Before and After Haircut" loading="lazy"></div>
                 <div class="page"><img src="/images/gallery24.jpg" alt="Manicure Service" loading="lazy"></div>
                 <div class="page"><img src="/images/gallery25.jpg" alt="Pedicure Service" loading="lazy"></div>
                 <div class="page"><img src="/images/gallery26.jpg" alt="Special Event Styling" loading="lazy"></div>
@@ -371,7 +381,7 @@
         function maintainScrollPosition() {
             const gallery = document.querySelector('.gallery');
             const rect = gallery.getBoundingClientRect();
-            const headerHeight = window.innerWidth <= 768 ? 120 : 150; // Match body padding-top
+            const headerHeight = window.innerWidth <= 768 ? 120 : 150;
             if (rect.top < headerHeight) {
                 window.scrollTo({
                     top: window.scrollY + rect.top - headerHeight,
@@ -407,14 +417,12 @@
 
         thumbnails.forEach(thumb => {
             thumb.addEventListener('click', (e) => {
-                e.preventDefault(); // Prevent scroll on thumbnail click
+                e.preventDefault();
                 currentPage = parseInt(thumb.dataset.page);
                 updatePage();
             });
         });
 
-        // Touch support for mobile
-        let touchStartX = 0;
         book.addEventListener('touchstart', e => {
             touchStartX = e.touches[0].clientX;
         });
@@ -424,7 +432,6 @@
             if (touchEndX > touchStartX + 50) flipPage('prev');
         });
 
-        // Keyboard navigation
         document.addEventListener('keydown', e => {
             if (e.key === 'ArrowLeft') flipPage('prev');
             if (e.key === 'ArrowRight') flipPage('next');

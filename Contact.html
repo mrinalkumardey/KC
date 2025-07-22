@@ -3,8 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us - KC Family Salon and Academy</title>
+    <title>Contact Us - KC Family Saloon and Academy</title>
     <style>
+        html {
+            scroll-behavior: smooth;
+            background-color: #4a2c3d; /* Added to prevent black patches */
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -16,19 +21,25 @@
             background-color: #f9f6f2;
             color: #333;
             line-height: 1.6;
+            padding-top: 150px; /* Added for fixed header */
+            min-height: 100vh; /* Ensure footer is reachable */
         }
 
         /* Header */
         header {
-            background: linear-gradient(135deg, #f3e7e9 0%, #e3eeff 100%);
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/images/kc.PNG') no-repeat center center/cover; /* Updated to match other pages */
             padding: 2rem 0;
             text-align: center;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            position: fixed; /* Added for consistency */
+            top: 0;
+            width: 100%;
+            z-index: 1000;
         }
 
         header h1 {
             font-size: 3rem;
-            color: #4a2c3d;
+            color: #fff; /* Updated to match other pages */
             letter-spacing: 2px;
         }
 
@@ -37,15 +48,16 @@
         }
 
         nav a {
-            color: #4a2c3d;
+            color: #fff; /* Updated to match other pages */
             text-decoration: none;
             margin: 0 1.5rem;
             font-size: 1.2rem;
-            transition: color 0.3s;
+            transition: color 0.3s, transform 0.3s; /* Added transform for consistency */
         }
 
         nav a:hover {
             color: #d4a5a5;
+            transform: scale(1.1); /* Added for consistency */
         }
 
         /* Contact Section */
@@ -148,15 +160,38 @@
             background-color: #4a2c3d;
             color: #fff;
             text-align: center;
-            padding: 1rem 0;
+            padding: 2rem 0; /* Updated for consistency */
+            position: relative;
+            z-index: 1000; /* Added for consistency */
         }
 
         footer p {
             font-size: 1rem;
         }
 
+        .social-links {
+            margin-top: 0.5rem;
+        }
+
+        .social-links a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 0.75rem;
+            font-size: 1.2rem;
+            transition: color 0.3s, transform 0.3s; /* Added transform for consistency */
+        }
+
+        .social-links a:hover {
+            color: #d4a5a5;
+            transform: scale(1.1); /* Added for consistency */
+        }
+
         /* Responsive Design */
         @media (max-width: 768px) {
+            body {
+                padding-top: 120px; /* Adjusted for smaller header */
+            }
+
             header h1 {
                 font-size: 2rem;
             }
@@ -185,17 +220,21 @@
             .map iframe {
                 height: 300px;
             }
+
+            footer {
+                padding: 1.5rem 0;
+            }
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>KC Family Salon and Academy</h1>
+        <h1>KC Family Saloon and Academy</h1>
         <nav>
             <a href="index.html">Home</a>
             <a href="services.html">Services</a>
-            <a href="tatto.html">Tatto</a>
-            <a href="Gallery.html">Gallery</a>
+            <a href="Tatto.html">Tattoo</a> <!-- Fixed capitalization -->
+            <a href="gallery.html">Gallery</a>
             <a href="contact.html">Contact</a>
         </nav>
     </header>

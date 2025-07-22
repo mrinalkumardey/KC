@@ -10,6 +10,7 @@
     <style>
         html {
             scroll-behavior: smooth;
+            background-color: #4a2c3d;
         }
 
         * {
@@ -24,6 +25,7 @@
             color: #333;
             line-height: 1.6;
             padding-top: 150px;
+            min-height: 100vh;
         }
 
         /* Header */
@@ -155,11 +157,17 @@
             background-color: #4a2c3d;
             color: #fff;
             text-align: center;
-            padding: 1rem 0;
+            padding: 2rem 0;
+            position: relative;
+            z-index: 1000;
         }
 
         footer p {
             font-size: 1rem;
+        }
+
+        .social-links {
+            margin-top: 0.5rem;
         }
 
         .social-links a {
@@ -193,6 +201,7 @@
             .services {
                 padding: 6rem 1rem;
                 top: 120px;
+                margin-bottom: 150px; /* Added to prevent footer overlap */
             }
 
             .services h2 {
@@ -211,6 +220,10 @@
                 font-size: 1rem;
                 margin: 0 0.5rem;
             }
+
+            footer {
+                padding: 1.5rem 0;
+            }
         }
     </style>
 </head>
@@ -221,7 +234,7 @@
             <a href="index.html">Home</a>
             <a href="services.html">Services</a>
             <a href="gallery.html">Gallery</a>
-            <a href="Tatto.html">Tattoo</a>
+            <a href="tatto.html">Tattoo</a>
             <a href="contact.html">Contact</a>
         </nav>
     </header>
