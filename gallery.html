@@ -53,12 +53,12 @@
             text-decoration: none;
             margin: 0 1.5rem;
             font-size: 1.2rem;
-            transition: color 0.3s, transform 0.3s; /* Added transform for consistency */
+            transition: color 0.3s, transform 0.3s;
         }
 
         nav a:hover {
             color: #d4a5a5;
-            transform: scale(1.1); /* Added for consistency */
+            transform: scale(1.1);
         }
 
         /* Gallery Section */
@@ -67,8 +67,7 @@
             text-align: center;
             background-color: #fff;
             min-height: 80vh;
-            position: sticky;
-            top: 150px;
+            margin-bottom: 150px; /* Prevent footer overlap */
         }
 
         .gallery h2 {
@@ -186,9 +185,9 @@
             background-color: #4a2c3d;
             color: #fff;
             text-align: center;
-            padding: 2rem 0; /* Increased for consistency */
+            padding: 2rem 0;
             position: relative;
-            z-index: 1000; /* Ensure above sticky sections */
+            z-index: 1000;
         }
 
         footer p {
@@ -204,13 +203,23 @@
             text-decoration: none;
             margin: 0 0.75rem;
             font-size: 1.2rem;
-            transition: color 0.3s, transform 0.3s; /* Added transform for consistency */
+            transition: color 0.3s, transform 0.3s;
         }
 
         .social-links a:hover {
             color: #d4a5a5;
-            transform: scale(1.1); /* Added for consistency */
+            transform: scale(1.1);
         }
+
+        footer p a {
+    color: #fff !important;
+    text-decoration: none;
+    transition: color 0.3s, transform 0.3s;
+}
+footer p a:hover {
+    color: #d4a5a5;
+    transform: scale(1.1);
+}
 
         /* Responsive Design */
         @media (max-width: 768px) {
@@ -229,7 +238,7 @@
 
             .gallery {
                 padding: 6rem 2rem;
-                top: 120px;
+                margin-bottom: 150px;
             }
 
             .gallery h2 {
@@ -267,7 +276,7 @@
         <nav>
             <a href="index.html">Home</a>
             <a href="services.html">Services</a>
-            <a href="Tatto.html">Tattoo</a> <!-- Fixed capitalization -->
+            <a href="Tatto.html">Tattoo</a>
             <a href="gallery.html">Gallery</a>
             <a href="contact.html">Contact</a>
         </nav>
@@ -299,7 +308,7 @@
                 <div class="page"><img src="/images/gallery20.jpg" alt="Highlight Styling" loading="lazy"></div>
                 <div class="page"><img src="/images/gallery21.jpg" alt="Salon Reception" loading="lazy"></div>
                 <div class="page"><img src="/images/gallery22.jpg" alt="Threading Service" loading="lazy"></div>
-                <div class="page"><img src="/images/gazebo23.jpg" alt="Before and After Haircut" loading="lazy"></div>
+                <div class="page"><img src="/images/gallery23.jpg" alt="Before and After Haircut" loading="lazy"></div>
                 <div class="page"><img src="/images/gallery24.jpg" alt="Manicure Service" loading="lazy"></div>
                 <div class="page"><img src="/images/gallery25.jpg" alt="Pedicure Service" loading="lazy"></div>
                 <div class="page"><img src="/images/gallery26.jpg" alt="Special Event Styling" loading="lazy"></div>
@@ -361,7 +370,7 @@
 
     <footer>
         <p>© 2025 KC Family Saloon and Academy. All rights reserved.</p>
-        <p>Designed by Mrinal Kumar</p>
+        <p><a href="https://www.linkedin.com/in/mrinal-kumar-dey-03014725b" target="_blank">Designed by Mrinal Kumar</a></p>.
         <div class="social-links">
             <a href="https://www.instagram.com/kcfamilysaloon" target="_blank"><i class="fab fa-instagram"></i></a>
             <a href="https://wa.me/+917002270181" target="_blank"><i class="fab fa-whatsapp"></i></a>
@@ -378,19 +387,11 @@
         let currentPage = 0;
         const totalPages = pages.length;
 
-        function maintainScrollPosition() {
-            const gallery = document.querySelector('.gallery');
-            const rect = gallery.getBoundingClientRect();
-            const headerHeight = window.innerWidth <= 768 ? 120 : 150;
-            if (rect.top < headerHeight) {
-                window.scrollTo({
-                    top: window.scrollY + rect.top - headerHeight,
-                    behavior: 'smooth'
-                });
-            }
-        }
-
         function updatePage() {
+            // Store current vertical scroll position
+            const scrollY = window.scrollY;
+
+            // Update active page and thumbnails
             pages.forEach((page, index) => {
                 page.classList.toggle('active', index === currentPage);
             });
@@ -398,8 +399,12 @@
             nextBtn.disabled = currentPage === totalPages - 1;
             thumbnails.forEach(thumb => thumb.classList.remove('active'));
             thumbnails[currentPage].classList.add('active');
+
+            // Scroll thumbnail into view (horizontal only)
             thumbnails[currentPage].scrollIntoView({ behavior: 'smooth', inline: 'center' });
-            maintainScrollPosition();
+
+            // Restore vertical scroll position
+            window.scrollTo({ top: scrollY, behavior: 'instant' });
         }
 
         function flipPage(direction, event) {
@@ -423,6 +428,7 @@
             });
         });
 
+        let touchStartX;
         book.addEventListener('touchstart', e => {
             touchStartX = e.touches[0].clientX;
         });
